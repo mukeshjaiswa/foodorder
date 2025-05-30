@@ -13,6 +13,7 @@ import Order from './Component/Order/Order';
 import Login from './Component/Login/Login';
 import Register from './Component/Login/Register';
 import Profile from './Component/Profile/Profile';
+import About from './Component/About/About';
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/home' element={<Home />} />
         <Route path='/:id' element={<Foodinfo />} />
+        <Route path='/about-us' element ={<About/>} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/order/:id' element={<Order />} />
         <Route path='/profile' element={<Profile/>} />

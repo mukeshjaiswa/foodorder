@@ -11,7 +11,7 @@ export default function Foodinfo() {
    const{id} =useParams()
    
     const [food, setFood] = useState();
-    const [count, setCount] = useState(1);
+  
    
     const email = localStorage.getItem('email')
     const handlercartplus = async () => {
@@ -69,9 +69,9 @@ export default function Foodinfo() {
                     <p>{food.strInstructions}</p>
                     <p className='text-2xl'>Prices: <span className='font-semibold text-slate-800' >Rs.350</span> </p>
                  
-                    <div className='flex mt-4 item-center justify-center gap-5'>
-                        <NavLink to={`/order/${id}`} className='bg-blue-800 text-white hover:bg-blue-900 rounded px-10 py-2'>Order Now</NavLink>
-                        <button className='bg-red-700 text-white hover:bg-red-900 rounded px-10 py-2' onClick={handlercartplus}>Add to cart</button>
+                    <div className='flex mt-4 px-5 item-center justify-center gap-5'>
+                       
+                        <button className=' w-full bg-red-700 text-white hover:bg-red-900 rounded px-10 py-2' onClick={handlercartplus}>Add to cart</button>
                     </div>
                 </div>
             </div>

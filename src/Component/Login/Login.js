@@ -33,6 +33,10 @@ export default function Login() {
                 const userid=respdata.docs[0].data()
                 localStorage.setItem('email',userid.email)
                 navigate(`/home`)
+                return
+            }
+            else{
+                toast.warn("Not Match")
             }
         } catch (error) {
             toast.warn("Not match")

@@ -1,11 +1,12 @@
 import React from 'react'
 import img1 from '../assest/img1.jpg'
 import { MdOutlineEdit } from "react-icons/md";
-import { useParams } from 'react-router-dom';
+
 import { useEffect } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../config/firebase';
+import NAvbar from '../Layout/NAvbar';
 
 export default function Profile({}) {
    
@@ -26,7 +27,10 @@ export default function Profile({}) {
     },[email])
  console.log(data)
     return (
-        <div className='w-full bg-gray-100 h-[100vh] flex items-center justify-center'>
+        <>
+  
+           <NAvbar className='w-full bg-gray-100 h-[100vh]'/>
+        <div className=' w-full bg-gray-100 h-[80vh] flex items-center justify-center'>
             <div className='w-[300px] h-[300px] flex flex-col items-center bg-white px-5 py-2'>
                 <div>
                     <img src={img1} alt='image' className='w-[150px] h-[150px]  rounded-full' />
@@ -47,5 +51,6 @@ export default function Profile({}) {
 
 
         </div>
+        </>
     )
 }

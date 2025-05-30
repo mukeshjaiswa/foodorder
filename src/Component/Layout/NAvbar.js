@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom';
 import { RxCross1 } from "react-icons/rx";
 import { useState } from 'react';
 import { CiShoppingCart } from "react-icons/ci";
-import { useEffect } from 'react';
+
 import { IoMdPerson } from "react-icons/io";
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { use } from 'react';
+
 import { toast } from 'react-toastify';
-import { async } from '@firebase/util';
-import Cart from '../Cart/Cart';
+
+
 
 
 export default function () {
@@ -43,6 +43,7 @@ export default function () {
                 toast.warn('error')
             }
         }
+
         getcount();
    
 
@@ -51,23 +52,30 @@ export default function () {
     return (
         <div className=' sticky   w-full'>
 
-            <div className='w-full border-b sticky top-0   flex justify-between px-5  sm:px-8 md:px-10 py-3  '>
-                <div data-aos='fade-right' className=''>
-                    <img src='/logo.png' alt='logo' className='w-[100px] h-auto md:w-[200px] ' />
+            <NavLink to='/home' className='w-full border-b sticky top-0   flex justify-between px-5  sm:px-8 md:px-10 py-3  '>
+                <div data-aos='fade-right' className='flex tracking-wider py-2 px-4 items-center justify-center text-xl' >
+                    {/* <img src={logoimg} alt='logo' className='w-[50px] h-[50px] md:w-[50px] ' /> */}
+                <h1 className='text-red-500 font-sans font-semibold'>F</h1>
+                <h1 className=''>R</h1>
+                <h1  className='text-red-500 font-sans font-semibold'>U</h1>
+                <h1>I</h1>
+                <h1  className='text-red-500 font-sans font-semibold'>T</h1>
+                <h1>S</h1>
+               
                 </div>
                 <div data-aos='fade-left' className=' hidden sm:flex '>
-                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Home</NavLink></li>
-                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>About</NavLink></li>
-                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Service</NavLink></li>
-                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Contact</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 flex items-center px-4 hover:bg-red-500 '><NavLink to='/home'>Home</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 flex items-center px-4 hover:bg-red-500 '><NavLink to='/about-us'>About</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 flex items-center px-4 hover:bg-red-500 '><NavLink>Service</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 flex items-center px-4 hover:bg-red-500 '><NavLink>Contact</NavLink></li>
 
                     <div className='flex text-3xl '>
 
-                        <NavLink to='/profile' className=' text-black' ><IoMdPerson /></NavLink>
+                        <NavLink to='/profile' className=' py-2 hover:text-green-500 text-black' ><IoMdPerson /></NavLink>
                     </div>
                     <div className='flex items-center justify-center'>
-                        <CiShoppingCart className='text-5xl px-1' />
-                        <NavLink to='/cart' className='absolute right-4 top-[0.7rem] text-red-400 cursor-pointer'>{countcart}</NavLink>
+                        <CiShoppingCart className='text-5xl px-1'  />
+                        <NavLink to='/cart'  className='absolute right-4 top-[0.7rem] text-red-400 cursor-pointer'>{countcart}</NavLink>
                     </div>
 
                 </div>
@@ -95,7 +103,7 @@ export default function () {
                     : ''
                 }
 
-            </div>
+            </NavLink>
 
         </div>
     )
