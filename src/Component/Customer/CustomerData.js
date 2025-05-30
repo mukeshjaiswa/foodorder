@@ -1,8 +1,8 @@
-import React from 'react'
+
 import img1 from '../assest/img1.jpg'
 import img2 from '../assest/img2.jpeg'
 import img3 from '../assest/img3.jpeg'
-import img4 from '../assest/img4.jpeg'
+
 
 export default function CustomerData() {
     return null

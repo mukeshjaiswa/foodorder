@@ -4,7 +4,7 @@ import loginimg from '../assest/loginimg.jpg'
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa6";
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
+
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+
 import Customer from '../Customer/Customer'
 import Footer from '../Footer/Footer'
 

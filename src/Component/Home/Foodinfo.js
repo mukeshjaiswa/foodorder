@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import { toast } from 'react-toastify';

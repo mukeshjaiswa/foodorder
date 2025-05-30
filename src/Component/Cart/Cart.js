@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { db } from '../config/firebase';
 import NAvbar from '../Layout/NAvbar'
-import { async } from '@firebase/util';
+
 
 export default function Cart() {
     const email = localStorage.getItem("email")
@@ -14,7 +14,8 @@ export default function Cart() {
     const [cartdata, setCartdata] = useState([])
 
     const [totalprice, setTotalPrice] = useState()
-    const[deliver,setDelivery]=useState(150);
+  
+    const deliver=150;
 
     const [total, setTotal] = useState(0);
     useEffect(() => {

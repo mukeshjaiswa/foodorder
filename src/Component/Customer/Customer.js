@@ -1,5 +1,4 @@
 import React from 'react'
-import hero from '../assest/hero.png'
 import { data } from './CustomerData'
 import { rule } from './CustomerData'
 
