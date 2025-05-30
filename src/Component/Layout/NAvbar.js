@@ -1,0 +1,102 @@
+import React from 'react'
+import { MdMenu } from "react-icons/md";
+import { NavLink } from 'react-router-dom';
+import { RxCross1 } from "react-icons/rx";
+import { useState } from 'react';
+import { CiShoppingCart } from "react-icons/ci";
+import { useEffect } from 'react';
+import { IoMdPerson } from "react-icons/io";
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../config/firebase';
+import { use } from 'react';
+import { toast } from 'react-toastify';
+import { async } from '@firebase/util';
+import Cart from '../Cart/Cart';
+
+
+export default function () {
+    const [countcart, setCountcart] = useState();
+    const [menuicon, setMenuIcon] = useState(false);
+    const [refcount, setRefcount] = useState(false)
+
+    const handlermenu = () => {
+        setMenuIcon(!menuicon);
+    }
+    
+        const getcount = async () => {
+            try {
+                const email = localStorage.getItem('email')
+                const resp = collection(db, 'cart');
+                const q = query(resp, where("email", "==", email));
+                const qdata = await getDocs(q);
+             
+                if (!qdata.empty) {
+                   const cartdata = qdata.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+                    setCountcart(cartdata.length)
+                }
+               
+
+            } catch {
+                toast.warn('error')
+            }
+        }
+        getcount();
+   
+
+
+
+    return (
+        <div className=' sticky   w-full'>
+
+            <div className='w-full border-b sticky top-0   flex justify-between px-5  sm:px-8 md:px-10 py-3  '>
+                <div data-aos='fade-right' className=''>
+                    <img src='/logo.png' alt='logo' className='w-[100px] h-auto md:w-[200px] ' />
+                </div>
+                <div data-aos='fade-left' className=' hidden sm:flex '>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Home</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>About</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Service</NavLink></li>
+                    <li className='list-none text-xl cursor-pointer hover:text-white rounded py-1 px-4 hover:bg-red-500 '><NavLink>Contact</NavLink></li>
+
+                    <div className='flex text-3xl '>
+
+                        <NavLink to='/profile' className=' text-black' ><IoMdPerson /></NavLink>
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <CiShoppingCart className='text-5xl px-1' />
+                        <NavLink to='/cart' className='absolute right-4 top-[0.7rem] text-red-400 cursor-pointer'>{countcart}</NavLink>
+                    </div>
+
+                </div>
+
+                <div className='sm:hidden'>
+                    {!menuicon ?
+                        <MdMenu className='text-2xl' onClick={handlermenu} />
+                        :
+                        <RxCross1 className='text-2xl' onClick={handlermenu} />
+
+                    }
+
+
+
+                </div>
+                {menuicon ?
+
+                    <div className=' w-[40%]  sm:hidden h-screen gap-3 py-5 bg-slate-700 text-white flex px-5 flex-col absolute top-[3rem] right-0 text-center'>
+                        <li className='list-none text-xl rounded cursor-pointer hover:text-black py-1 px-4 hover:bg-gray-300 '><NavLink>Home</NavLink></li>
+                        <li className='list-none rounded text-xl cursor-pointer hover:text-black py-1 px-4 hover:bg-gray-300 '><NavLink>About</NavLink></li>
+                        <li className='list-none rounded text-xl cursor-pointer hover:text-black py-1 px-4 hover:bg-gray-300 '><NavLink>Service</NavLink></li>
+                        <li className='list-none rounded text-xl cursor-pointer hover:text-black py-1 px-4 hover:bg-gray-300 '><NavLink>Contact</NavLink></li>
+
+                    </div>
+                    : ''
+                }
+
+            </div>
+
+        </div>
+    )
+}
